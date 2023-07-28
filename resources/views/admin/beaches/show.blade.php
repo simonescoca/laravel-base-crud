@@ -5,13 +5,19 @@
 @section("main")
     <main>
         <div class="container">
-            @if (session('updated'))
+            @if (session('stored'))
                 <div class="col-12">
-                    <div class="alert alert-primary">
-                        {{ session('updated') }} has been updated succesfully
+                    <div class="alert alert-success">
+                        {{ session('stored') }} has been created
                     </div>
                 </div>
-            @endif
+            @elseif (session('updated'))
+            <div class="col-12">
+                <div class="alert alert-success">
+                    {{ session('updated') }} has been updated succesfully
+                </div>
+            </div>
+        @endif
             <p>
                 Beach Name: {{ $beach->name }}
             </p>
