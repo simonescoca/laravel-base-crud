@@ -77,23 +77,14 @@
                             </td>
 
                             <td>
-
-                                <a class="btn btn-sm btn-primary me-2"
-                                    href="{{ route('admin.beaches.show', $beach->id) }}">
-                                    View
-                                </a>
-                                <a class="btn btn-sm btn-warning me-2"
-                                     href="{{ route('admin.beaches.edit', $beach->id) }}">Edit
-                                </a>
-                                <form action="{{ route('admin.beaches.destroy', $beach->id) }}" class="d-inline form-deleter" method="POST">
+                                <form action="{{ route('admin.beaches.restore', $beach->id) }}" class="d-inline form-deleter" method="POST">
                                     @csrf
                                     @method('DELETE')
 
-                                    <button type="submit" class="btn btn-sm btn-danger me-2">
-                                        Delete
+                                    <button type="submit" class="btn btn-sm btn-warning me-2">
+                                        Restore
                                     </button>
                                 </form>
-
                             </td>
 
                         </tr>
@@ -114,7 +105,7 @@
         deleteFormElements.forEach(formElement => {
             formElement.addEventListener('submit', function(event) {
                 event.preventDefault();
-                const userConfirm = window.confirm('Are you sure you want to delete this beach?');
+                const userConfirm = window.confirm('Are you sure you want to restore this beach?');
                 if (userConfirm){
                     this.submit();
                 }

@@ -101,4 +101,20 @@ class BeachController extends Controller
 
         return redirect()->route("admin.beaches.index")->with("deleted", $beach->name);
     }
+
+    public function trashed(){
+        $beachList = Beach::onlyTrashed()->paginate(10);
+        return view('admin.beaches.trashed', compact('beachList'));
+    }
+
+    public function restore(Int $id){
+        $beach = Beach::withTrashed()->findOrFail($id);
+        $beach->restore();
+        return redirect()->route('admin.beaches.index')->with('restored', $beach->name);
+    }
 }
+
+
+
+
+
