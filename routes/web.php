@@ -15,7 +15,7 @@ use App\Http\Controllers\Admin\BeachController as AdminController;
 */
 
 Route::get('/', function () { return view('home'); })->name('guest.home');
-
+Route::get('admin/beaches/deleted', [AdminController::class, 'trashed'])->name('admin.beaches.trashed');
 Route::get('admin/beaches', [AdminController::class, 'index'])->name('admin.beaches.index');
 Route::get('admin/beaches/create', [AdminController::class, 'create'])->name('admin.beaches.create');
 Route::post('admin/beaches', [AdminController::class, 'store'])->name('admin.beaches.store');
@@ -23,5 +23,4 @@ Route::get('admin/beaches/{id}', [AdminController::class, 'show'])->name('admin.
 Route::get('admin/beaches/{id}/edit', [AdminController::class, 'edit'])->name('admin.beaches.edit');
 Route::put('admin/beaches/{id}', [AdminController::class, 'update'])->name('admin.beaches.update');
 Route::delete('admin/beaches/{id}', [AdminController::class, 'destroy'])->name('admin.beaches.destroy');
-Route::get('/beaches/deleted', [AdminController::class, 'trashed'])->name('beaches.trashed');
-Route::delete('/beaches/deleted/{id}', [AdminController::class, 'restore'])->name('beaches.restore');
+Route::delete('admin/beaches/deleted/{id}', [AdminController::class, 'restore'])->name('admin.beaches.restore');
