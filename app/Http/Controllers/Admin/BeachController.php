@@ -19,7 +19,7 @@ class BeachController extends Controller
     public function index()
     {
         $beachList = Beach::paginate(5);
-        return view("admin.beaches.index", compact("beachList"));
+        return view("admin.beaches.index",  compact("beachList"));
     }
 
     /**
