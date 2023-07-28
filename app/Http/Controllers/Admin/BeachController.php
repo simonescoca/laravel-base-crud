@@ -45,7 +45,7 @@ class BeachController extends Controller
         $newBeach->fill($data);
         $newBeach->save();
 
-        return redirect()->route("admin.beaches.show", $newBeach->id);
+        return redirect()->route("admin.beaches.show", $newBeach->id)->with('stored', $newBeach->name);
     }
 
     /**
@@ -111,6 +111,12 @@ class BeachController extends Controller
         $beach = Beach::withTrashed()->findOrFail($id);
         $beach->restore();
         return redirect()->route('admin.beaches.index')->with('restored', $beach->name);
+    }
+
+    public function hardDelete($id){
+        $beach = Beach::withTrashed()->findOrFail($id);
+        $beach->forceDelete();
+        return redirect()->route("admin.beaches.index")->with("hardDelete", $beach->name);
     }
 }
 
