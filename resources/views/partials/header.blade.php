@@ -16,6 +16,11 @@
                     Create New Element
                 </a>
             </li>
+            <li class="mx-3">
+                <a href="{{ route("admin.beaches.trashed") }}">
+                    View Deleted Elements
+                </a>
+            </li>
         </ul>
     </div>
 </header>
