@@ -114,7 +114,7 @@
         deleteFormElements.forEach(formElement => {
             formElement.addEventListener('submit', function(event) {
                 event.preventDefault();
-                const userConfirm = window.confirm('Are you sure you want to delete this comic?');
+                const userConfirm = window.confirm('Are you sure you want to delete this beach?');
                 if (userConfirm){
                     this.submit();
                 }
