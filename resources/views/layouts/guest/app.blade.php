@@ -7,7 +7,7 @@
         <title>@yield("title", "Beaches")</title>
     </head>
     <body>
-        @include("partials.header")
+        @include("partials.guest-header")
 
         @yield("main")
 
