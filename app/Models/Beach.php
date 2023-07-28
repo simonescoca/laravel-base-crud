@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Beach extends Model
 {
+    use SoftDeletes;
     use HasFactory;
     protected $fillable = [
         "name",
