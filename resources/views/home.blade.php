@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-12">
             <h1 class="m-3">
-                Admin Beach Index Panel
+                Beach List
             </h1>
         </div>
     </div>
@@ -29,28 +29,24 @@
             <table class="table table-striped table-hover text-center table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">name</th>
-                        <th scope="col">location</th>
-                        <th scope="col">umbrella_number</th>
-                        <th scope="col">sunbed_number</th>
-                        <th scope="col">umbrella_price_per_day</th>
-                        <th scope="col">opening_date</th>
-                        <th scope="col">closing_date</th>
-                        <th scope="col">beachvolley_court</th>
-                        <th class="col ">football_court</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Umbrellas</th>
+                        <th scope="col">Sunbeds</th>
+                        <th scope="col">Price per day</th>
+                        <th scope="col">Opening Date</th>
+                        <th scope="col">Closing Date</th>
+                        <th scope="col">Beachvolley Court</th>
+                        <th class="col ">Football Court</th>
                         <th class="col-2 ">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($beachList as $beach)
                         <tr>
-                            <th scope="row">
-                                {{ $beach->id }}
-                            </th>
-                            <td>
+                            <th>
                                 {{ $beach->name  }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $beach->location  }}
                             </td>
