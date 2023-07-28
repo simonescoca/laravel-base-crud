@@ -1,4 +1,4 @@
-@extends("layouts.app")
+@extends("layouts.guest.app")
 
 @section("title", "Show a beach")
 
