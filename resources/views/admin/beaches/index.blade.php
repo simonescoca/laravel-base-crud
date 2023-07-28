@@ -61,7 +61,7 @@
                                 {{ $beach->sunbed_number}}
                             </td>
                             <td>
-                                {{ $beach->umbrella_price_per_day }}€
+                                {{ number_format($beach->umbrella_price_per_day, 2, '.', ''); }}€
                             </td>
                             <td>
                                 {{ $beach->opening_date }}
@@ -82,14 +82,14 @@
                                     href="{{ route('admin.beaches.show', $beach->id) }}">
                                     View
                                 </a>
-                                <a class="btn btn-sm btn-success me-2"
+                                <a class="btn btn-sm btn-warning me-2"
                                      href="{{ route('admin.beaches.edit', $beach->id) }}">Edit
                                 </a>
                                 <form action="{{ route('admin.beaches.destroy', $beach->id) }}" class="d-inline form-deleter" method="POST">
                                     @csrf
                                     @method('DELETE')
 
-                                    <button type="submit" class="btn btn-sm btn-warning me-2">
+                                    <button type="submit" class="btn btn-sm btn-danger me-2">
                                         Delete
                                     </button>
                                 </form>
