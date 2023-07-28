@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Beach;
+use App\Http\Requests\UpdateBeachRequest;
+use App\Http\Requests\StoreBeachRequest;
+use Illuminate\Validation\Rule;
 
 class BeachController extends Controller
 {
@@ -35,9 +38,14 @@ class BeachController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBeachRequest $request)
     {
-        //
+        $newBeach = new Beach();
+        $data = $request->validated();
+        $newBeach->fill($data);
+        $newBeach->save();
+
+        return redirect()->route("admin.beaches.show", $newBeach->id);
     }
 
     /**
@@ -48,7 +56,8 @@ class BeachController extends Controller
      */
     public function show($id)
     {
-        //
+        $beach = Beach::findOrFail($id);
+        return view("admin.beaches.show", compact("beach"));
     }
 
     /**
@@ -59,7 +68,8 @@ class BeachController extends Controller
      */
     public function edit($id)
     {
-        //
+        $beach = Beach::findOrFail($id);
+        return view("admin.beaches.edit", compact("beach"));
     }
 
     /**
@@ -69,9 +79,13 @@ class BeachController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateBeachRequest $request, $id)
     {
-        //
+        $data = $request->validated();
+        $newBeach =  Beach::findOrFail($id);
+        $newBeach->update($data);
+
+        return redirect()->route("admin.beaches.show", $newBeach->id)->with("updated", $newBeach->name);
     }
 
     /**
@@ -82,6 +96,9 @@ class BeachController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $beach = Beach::findOrFail($id);
+        $beach->delete();
+
+        return redirect()->route("admin.beaches.index")->with("deleted", $beach->name);
     }
 }
