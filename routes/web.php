@@ -23,4 +23,5 @@ Route::get('admin/beaches/{id}', [AdminController::class, 'show'])->name('admin.
 Route::get('admin/beaches/{id}/edit', [AdminController::class, 'edit'])->name('admin.beaches.edit');
 Route::put('admin/beaches/{id}', [AdminController::class, 'update'])->name('admin.beaches.update');
 Route::delete('admin/beaches/{id}', [AdminController::class, 'destroy'])->name('admin.beaches.destroy');
+Route::delete('admin/beaches/{id}/hardDelete', [AdminController::class, 'hardDelete'])->name('admin.beaches.hardDelete');
 Route::delete('admin/beaches/deleted/{id}', [AdminController::class, 'restore'])->name('admin.beaches.restore');

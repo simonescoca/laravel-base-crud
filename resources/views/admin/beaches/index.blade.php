@@ -24,6 +24,18 @@
                     {{ session('created') }} has been created succesfully
                 </div>
             </div>
+        @elseif ( session('restored'))
+            <div class="col-12">
+                <div class="alert alert-success">
+                    {{ session('restored') }} has been restored succesfully
+                </div>
+            </div>
+        @elseif ( session('hardDelete'))
+            <div class="col-12">
+                <div class="alert alert-danger">
+                    {{ session('hardDelete') }} has been hard deleted succesfully
+                </div>
+            </div>
         @endif
         <div class="col-12">
             <table class="table table-striped table-hover text-center table-bordered">

@@ -77,7 +77,7 @@
                             </td>
 
                             <td>
-                                <form action="{{ route('admin.beaches.restore', $beach->id) }}" class="d-inline form-deleter" method="POST">
+                                <form action="{{ route('admin.beaches.restore', $beach->id) }}" class="d-inline form-restorer" method="POST">
                                     @csrf
                                     @method('DELETE')
 
@@ -85,8 +85,16 @@
                                         Restore
                                     </button>
                                 </form>
-                            </td>
 
+                                <form action="{{ route('admin.beaches.hardDelete', $beach->id) }}" class="d-inline form-deleter" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button type="submit" class="btn btn-sm btn-danger me-2">
+                                        Hard Delete
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -101,12 +109,22 @@
 @endsection
 @section('custom-script-tail')
     <script>
+        const restoreFormElements = document.querySelectorAll('form.form-restorer');
+        restoreFormElements.forEach(formElement => {
+            formElement.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const userConfirmRestore = window.confirm('Are you sure you want to restore this beach?');
+                if (userConfirmRestore){
+                    this.submit();
+                }
+            });
+        });
         const deleteFormElements = document.querySelectorAll('form.form-deleter');
         deleteFormElements.forEach(formElement => {
             formElement.addEventListener('submit', function(event) {
                 event.preventDefault();
-                const userConfirm = window.confirm('Are you sure you want to restore this beach?');
-                if (userConfirm){
+                const userConfirmDelete = window.confirm('Are you sure you want to delete permantly this beach?');
+                if (userConfirmDelete){
                     this.submit();
                 }
             });
